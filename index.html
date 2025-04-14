@@ -272,5 +272,52 @@
       moveSlide(current);
     }, 4000);
   </script>
+<script>
+  const slider = document.getElementById("slider");
+  const track = document.getElementById("sliderTrack");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    slider.classList.add("cursor-grabbing");
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = track.offsetLeft;
+  });
+
+  slider.addEventListener("mouseleave", () => {
+    isDown = false;
+    slider.classList.remove("cursor-grabbing");
+  });
+
+  slider.addEventListener("mouseup", () => {
+    isDown = false;
+    slider.classList.remove("cursor-grabbing");
+  });
+
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    track.style.transform = `translateX(${walk}px)`;
+  });
+
+  // 터치용 추가
+  let startTouchX = 0;
+  let currentTranslate = 0;
+
+  slider.addEventListener("touchstart", (e) => {
+    startTouchX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener("touchmove", (e) => {
+    const moveX = e.touches[0].clientX;
+    const diff = startTouchX - moveX;
+    track.style.transform = `translateX(-${diff}px)`;
+  });
+</script>
+
 </body>
 </html>
