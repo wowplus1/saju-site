@@ -1,46 +1,276 @@
-
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>사주 풀이</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>운세 통합 메인페이지</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="max-w-md mx-auto mt-6 px-4">
-    <div class="bg-white rounded-2xl shadow p-5">
-      <h2 class="text-xl font-bold mb-4">가장 정확한 사주 풀이</h2>
-      <div class="grid grid-cols-3 gap-y-6 text-center text-sm">
-        <div class="relative flex flex-col items-center gap-1">
-          <span class="absolute top-0 right-5 text-xs text-red-500 font-bold">N</span>
-          <img src="raw (15).png" class="w-10 h-10" alt="토정비결"/>
-          <span>토정비결</span>
-        </div>
-        <div class="relative flex flex-col items-center gap-1">
-          <span class="absolute top-0 right-5 text-xs text-red-500 font-bold">N</span>
-          <img src="raw (16).png" class="w-10 h-10" alt="평생사주"/>
-          <span>평생사주</span>
-        </div>
-        <div class="relative flex flex-col items-center gap-1">
-          <span class="absolute top-0 right-5 text-xs text-red-500 font-bold">N</span>
-          <img src="raw (17).png" class="w-10 h-10" alt="건강사주"/>
-          <span>건강사주</span>
-        </div>
-        <div class="flex flex-col items-center gap-1">
-          <img src="raw (18).png" class="w-10 h-10" alt="재물사주"/>
-          <span>재물사주</span>
-        </div>
-        <div class="flex flex-col items-center gap-1">
-          <img src="raw (19).png" class="w-10 h-10" alt="자녀사주"/>
-          <span>자녀사주</span>
-        </div>
-        <div class="flex flex-col items-center gap-1">
-          <img src="raw (20).png" class="w-10 h-10" alt="애정사주"/>
-          <span>애정사주</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<body class="bg-gradient-to-b from-blue-50 via-white to-gray-100 text-gray-800">
+<!-- 상단 배너 -->
+<div class="max-w-md mx-auto mt-4 px-4">
+<div class="bg-blue-100 rounded-2xl p-4">
+<h1 class="text-xl font-bold mb-1">운세 통합 서비스</h1>
+<p class="text-sm text-gray-700">오늘, 당신에게 필요한 모든 운세를 한 곳에서</p>
+</div>
+</div>
+<!-- 오늘의 운세 추천 (배너형 슬라이더) -->
+<section class="max-w-md mx-auto mt-6 px-4">
+<h2 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="w-1 h-5 bg-blue-500 rounded-sm inline-block"></span>운세 추천</h2>
+<div class="overflow-hidden relative" id="slider">
+<div class="flex transition-transform duration-500 w-full" id="sliderTrack">
+<div class="flex transition-transform duration-500 w-full" id="sliderTrack">
+<div class="flex-shrink-0 w-full" style="min-width: 100%;">
+<img alt="골프 운세" class="w-full h-auto rounded-xl shadow" src="https://wowplus1.github.io/saju-site/golf_bener.png"/>
+</div>
+<div class="flex-shrink-0 w-full" style="min-width: 100%;">
+<img alt="코디 운세" class="w-full h-auto rounded-xl shadow" src="https://wowplus1.github.io/saju-site/fashion_bener.png"/>
+</div>
+<div class="flex-shrink-0 w-full" style="min-width: 100%;">
+<img alt="계약 운세" class="w-full h-auto rounded-xl shadow" src="https://wowplus1.github.io/saju-site/contract_bener.png"/>
+</div>
+<div class="flex-shrink-0 w-full" style="min-width: 100%;">
+<img alt="음식 운세" class="w-full h-auto rounded-xl shadow" src="https://wowplus1.github.io/saju-site/food_bener.png"/>
+</div>
+<div class="flex-shrink-0 w-full" style="min-width: 100%;">
+<img alt="여행 운세" class="w-full h-auto rounded-xl shadow" src="https://wowplus1.github.io/saju-site/travel_bener.png"/>
+</div>
+<div class="flex-shrink-0 w-full" style="min-width: 100%;">
+<img alt="쇼핑 운세" class="w-full h-auto rounded-xl shadow" src="https://wowplus1.github.io/saju-site/shopping_bener.png"/>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-3 space-x-2">
+<span class="dot w-2 h-2 bg-gray-300 rounded-full cursor-pointer" onclick="moveSlide(0)"></span>
+<span class="dot w-2 h-2 bg-gray-300 rounded-full cursor-pointer" onclick="moveSlide(1)"></span>
+<span class="dot w-2 h-2 bg-gray-300 rounded-full cursor-pointer" onclick="moveSlide(2)"></span>
+<span class="dot w-2 h-2 bg-gray-300 rounded-full cursor-pointer" onclick="moveSlide(3)"></span>
+<span class="dot w-2 h-2 bg-gray-300 rounded-full cursor-pointer" onclick="moveSlide(4)"></span>
+<span class="dot w-2 h-2 bg-gray-300 rounded-full cursor-pointer" onclick="moveSlide(5)"></span>
+</div>
+</div>
+</section>
+<!-- 오늘의 운세 카테고리 -->
+<section class="max-w-md mx-auto mt-10 px-4 py-6 border-l-4 border-blue-400 bg-[url('https://images.unsplash.com/photo-1522199794611-8e2f2a6f74e0?auto=format&amp;fit=crop&amp;w=800&amp;q=80')] bg-cover bg-center bg-white/80 text-gray-900 rounded-xl" id="오늘의-운세">
+<h2 class="text-xl font-bold mb-4">오늘의 운세</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white rounded-xl p-4 flex flex-col justify-between h-36">
+<div>
+<h3 class="text-sm font-bold text-left">오늘의 운세</h3>
+<p class="text-xs text-gray-500 mt-1 text-left">기본적인 오늘 하루의 흐름</p>
+</div>
+<div class="flex justify-end">
+<img alt="오늘운세" class="w-14 h-14" src="./icons/sun.png"/>
+</div>
+</div>
+<div class="bg-white rounded-xl p-4 flex flex-col justify-between h-36">
+<div>
+<h3 class="text-sm font-bold text-left">내일의 운세</h3>
+<p class="text-xs text-gray-500 mt-1 text-left">미리 보는 내일 하루의 기운</p>
+</div>
+<div class="flex justify-end">
+<img alt="내일운세" class="w-14 h-14" src="./icons/mountain_sun.png"/>
+</div>
+</div>
+<div class="bg-white rounded-xl p-4 flex flex-col justify-between h-36">
+<div>
+<h3 class="text-sm font-bold text-left">주간 운세</h3>
+<p class="text-xs text-gray-500 mt-1 text-left">이번 주 운세 총정리</p>
+</div>
+<div class="flex justify-end">
+<img alt="주간운세" class="w-14 h-14" src="./icons/calendar_week.png"/>
+</div>
+</div>
+<div class="bg-white rounded-xl p-4 flex flex-col justify-between h-36">
+<div>
+<h3 class="text-sm font-bold text-left">월간 운세</h3>
+<p class="text-xs text-gray-500 mt-1 text-left">한 달의 흐름과 계획</p>
+</div>
+<div class="flex justify-end">
+<img alt="월간운세" class="w-14 h-14" src="./icons/calendar_month.png"/>
+</div>
+</div>
+</div>
+</section>
+<!-- 사주 운세 카테고리 -->
+<section class="max-w-md mx-auto mt-10 px-4 py-6 border-l-4 border-green-400 bg-[url('https://images.unsplash.com/photo-1603785221141-37c2ec0b10f2?auto=format&amp;fit=crop&amp;w=800&amp;q=80')] bg-cover bg-center bg-white/80 text-gray-900 rounded-xl" id="사주-운세">
+<h2 class="text-xl font-bold mb-4">사주 운세</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex items-center gap-4">
+<img alt="토정비결" class="w-12 h-12" src="./icons/scroll.png"/>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">토정비결</h3>
+<p class="text-xs text-gray-500 text-center">올해의 흐름과 변화 예측</p>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex items-center gap-4">
+<img alt="평생사주" class="w-12 h-12" src="./icons/timeline.png"/>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">평생 사주</h3>
+<p class="text-xs text-gray-500 text-center">당신의 인생 전반 운세</p>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex items-center gap-4">
+<img alt="건강사주" class="w-12 h-12" src="./icons/heart_rate.png"/>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">건강 사주</h3>
+<p class="text-xs text-gray-500 text-center">체질과 건강운을 알아보세요</p>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex items-center gap-4">
+<img alt="재물사주" class="w-12 h-12" src="./icons/money.png"/>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">재물 사주</h3>
+<p class="text-xs text-gray-500 text-center">돈의 흐름과 재운 예측</p>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex items-center gap-4">
+<img alt="자녀사주" class="w-12 h-12" src="./icons/baby.png"/>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">자녀 사주</h3>
+<p class="text-xs text-gray-500 text-center">아이의 기질과 미래 보기</p>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex items-center gap-4">
+<img alt="애정사주" class="w-12 h-12" src="./icons/heart.png"/>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">애정 사주</h3>
+<p class="text-xs text-gray-500 text-center">사랑과 관계의 기운</p>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex items-center gap-4">
+<img alt="취업/직장" class="w-12 h-12" src="./icons/job.png"/>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">취업/직장</h3>
+<p class="text-xs text-gray-500 text-center">커리어 흐름과 적성 분석</p>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex items-center gap-4">
+<img alt="인생조언" class="w-12 h-12" src="./icons/advice.png"/>
+<div class="flex-1">
+<h3 class="text-sm font-semibold">인생 조언</h3>
+<p class="text-xs text-gray-500 text-center">지금 필요한 방향성과 조언</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 타로 운세 카테고리 -->
+<section class="max-w-md mx-auto mt-10 px-4 py-6 border-l-4 border-pink-400 bg-[url('https://images.unsplash.com/photo-1600486913746-3a2ce3cdb9d6?auto=format&amp;fit=crop&amp;w=800&amp;q=80')] bg-cover bg-center bg-white/80 text-gray-900 rounded-xl" id="타로-운세">
+<h2 class="text-xl font-bold mb-4">타로 운세</h2>
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col items-center">
+<img alt="오늘타로" class="w-12 h-12 mb-2" src="./icons/tarot_today.png"/>
+<h3 class="text-sm font-semibold text-center">오늘 타로</h3>
+<p class="text-xs text-gray-500 text-center">오늘의 분위기와 방향</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col items-center">
+<img alt="한달타로" class="w-12 h-12 mb-2" src="./icons/tarot_month.png"/>
+<h3 class="text-sm font-semibold text-center">한달 타로</h3>
+<p class="text-xs text-gray-500 text-center">다가올 한 달의 흐름</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col items-center">
+<img alt="사랑타로" class="w-12 h-12 mb-2" src="./icons/tarot_love.png"/>
+<h3 class="text-sm font-semibold text-center">사랑 타로</h3>
+<p class="text-xs text-gray-500 text-center">사랑의 방향성과 가능성</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col items-center">
+<img alt="나의사랑" class="w-12 h-12 mb-2" src="./icons/heart_bloom.png"/>
+<h3 class="text-sm font-semibold text-center">나의 사랑</h3>
+<p class="text-xs text-gray-500 text-center">내 마음속 사랑의 해석</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col items-center">
+<img alt="금전타로" class="w-12 h-12 mb-2" src="./icons/coin_piggy.png"/>
+<h3 class="text-sm font-semibold text-center">금전 타로</h3>
+<p class="text-xs text-gray-500 text-center">돈과 기회의 흐름</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col items-center">
+<img alt="직업타로" class="w-12 h-12 mb-2" src="./icons/laptop.png"/>
+<h3 class="text-sm font-semibold text-center">직업 타로</h3>
+<p class="text-xs text-gray-500 text-center">일과 진로의 기회</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col items-center">
+<img alt="사랑독심술" class="w-12 h-12 mb-2" src="./icons/mind_heart.png"/>
+<h3 class="text-sm font-semibold text-center">사랑 독심술</h3>
+<p class="text-xs text-gray-500 text-center">상대의 마음을 들여다보기</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col items-center">
+<img alt="애인만들기" class="w-12 h-12 mb-2" src="./icons/heart_couple.png"/>
+<h3 class="text-sm font-semibold text-center">애인 만들기</h3>
+<p class="text-xs text-gray-500 text-center">새로운 만남의 기회</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition flex flex-col items-center">
+<img alt="짝사랑종결" class="w-12 h-12 mb-2" src="./icons/confess.png"/>
+<h3 class="text-sm font-semibold text-center">짝사랑 종결</h3>
+<p class="text-xs text-gray-500 text-center">마음을 전할 타이밍</p>
+</div>
+</div>
+</section>
+<!-- 특별 운세 롤링 배너 -->
+<section class="max-w-md mx-auto mt-6 px-4 pb-24">
+<h2 class="text-xl font-bold mb-4">특별 운세</h2>
+<div class="overflow-hidden relative" id="specialSlider">
+<div class="flex transition-transform duration-500 w-full" id="specialTrack">
+<div class="flex-shrink-0 bg-white rounded-xl shadow p-4 w-full" style="min-width: 100%;">
+<img alt="띠별운" class="w-12 h-12 mb-2 mx-auto" src="./icons/zodiac.png"/>
+<h3 class="text-sm font-semibold text-center">띠별 운세</h3>
+<p class="text-xs text-gray-500 text-center">12띠별 오늘의 운세</p>
+</div>
+<div class="flex-shrink-0 bg-white rounded-xl shadow p-4 w-full" style="min-width: 100%;">
+<img alt="로또운" class="w-12 h-12 mb-2 mx-auto" src="./icons/lotto.png"/>
+<h3 class="text-sm font-semibold text-center">로또 운세</h3>
+<p class="text-xs text-gray-500 text-center">행운의 숫자, 오늘의 복권운</p>
+</div>
+<div class="flex-shrink-0 bg-white rounded-xl shadow p-4 w-full" style="min-width: 100%;">
+<img alt="운세분석" class="w-12 h-12 mb-2 mx-auto" src="./icons/analysis.png"/>
+<h3 class="text-sm font-semibold text-center">운세 분석</h3>
+<p class="text-xs text-gray-500 text-center">당신의 운세 흐름 분석</p>
+</div>
+</div>
+<div class="flex justify-center mt-3 space-x-2">
+<span class="dot2 w-2 h-2 bg-gray-300 rounded-full cursor-pointer" onclick="moveSpecial(0)"></span>
+<span class="dot2 w-2 h-2 bg-gray-300 rounded-full cursor-pointer" onclick="moveSpecial(1)"></span>
+<span class="dot2 w-2 h-2 bg-gray-300 rounded-full cursor-pointer" onclick="moveSpecial(2)"></span>
+</div>
+</div>
+</section>
+<script>
+  const specialSlider = document.getElementById('specialSlider');
+  const specialTrack = document.getElementById('specialTrack');
+  const dots2 = document.querySelectorAll('.dot2');
+  let currentSpecial = 0;
+
+  function moveSpecial(index) {
+    const width = specialSlider.clientWidth;
+    specialTrack.style.transform = `translateX(-${index * width}px)`;
+    dots2.forEach(dot => dot.classList.remove('bg-blue-500'));
+    dots2[index].classList.add('bg-blue-500');
+    currentSpecial = index;
+  }
+
+  setInterval(() => {
+    currentSpecial = (currentSpecial + 1) % 3;
+    moveSpecial(currentSpecial);
+  }, 4000);
+</script>
+<script>
+    const slider = document.getElementById('slider');
+    const track = document.getElementById('sliderTrack');
+    const dots = document.querySelectorAll('.dot');
+    let current = 0;
+
+    function moveSlide(index) {
+      const width = slider.clientWidth;
+      track.style.transform = `translateX(-${index * width}px)`;
+      dots.forEach(dot => dot.classList.remove('bg-blue-500'));
+      dots[index].classList.add('bg-blue-500');
+      current = index;
+    }
+
+    setInterval(() => {
+      current = (current + 1) % 6;
+      moveSlide(current);
+    }, 4000);
+  </script>
 </body>
 </html>
